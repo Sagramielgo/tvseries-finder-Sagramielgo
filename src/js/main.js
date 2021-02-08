@@ -26,15 +26,22 @@
 
 // variable de los datos que me devuelve el api
 let series = [];
+const inputElement = document.querySelector('.js-input');
 
 //CREAR función y meter api dentro
 function getDataFromApi() {
-  fetch('http://api.tvmaze.com/search/shows?q=girls')
+  fetch(`http://api.tvmaze.com/search/shows?q=${inputElement.value}`)
     .then((response) => response.json())
     .then((data) => {
-      series = data;
+      series = series.push(data);
       console.log(series);
+      paintSeries();
     });
+}
+
+//pintar data results
+function paintSeries() {
+  console.log('Estoy pintando esto:', series);
 }
 
 //start api
