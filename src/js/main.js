@@ -50,7 +50,8 @@ function paintSeries() {
   let codeHTML = '';
   for (let index = 0; index < series.length; index++) {
     const name = series[index].name;
-    codeHTML += `<li class="seriesCard js-seriesCard" >`;
+    const id = series[index].id;
+    codeHTML += `<li class="seriesCard js-seriesCard" id="${id}">`;
     codeHTML += `<div class="imgContainer">`;
     codeHTML += '</div>';
     codeHTML += `<h3 class="series-title js-seriesTitle">${name}</h3>`;
