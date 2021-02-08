@@ -45,7 +45,7 @@ function getDataFromApi() {
     });
 }
 
-// evitar que envíe al dar intro al input
+// evitar que envíe el input por defecto
 function handleForm(ev) {
   ev.preventDefault();
 }
@@ -87,7 +87,16 @@ function paintSeries() {
     codeHTML += `</li>`;
   }
   showsContainerElement.innerHTML = codeHTML;
+  listenSerieEvents();
+}
 
+//serie válida o no
+function isValidSerie(serie) {
+  return serie.name.includes(inputElement.value);
+}
+
+//LISTEN serie Events
+function listenSerieEvents() {
   //SELECCIONAR SERIES
   const seriesElements = document.querySelectorAll('.js-seriesCard');
   for (const seriesElement of seriesElements) {
@@ -96,11 +105,6 @@ function paintSeries() {
 }
 function handleSerie() {
   console.log('me han clikado');
-}
-
-//serie válida o no
-function isValidSerie(serie) {
-  return serie.name.includes(inputElement.value);
 }
 
 // EVENTO click al botón de buscar
