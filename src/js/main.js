@@ -23,3 +23,14 @@
     5. Escuchar botón borrar cada serie de favoritos
     5.1 botón borrar todos los favoritos
 */
+
+// variable de los datos que me devuelve el api
+let series = [];
+
+//llamada al api y promesas
+fetch('http://api.tvmaze.com/search/shows?q=girls')
+  .then((response) => response.json())
+  .then((data) => {
+    series = data;
+    console.log(series);
+  });
