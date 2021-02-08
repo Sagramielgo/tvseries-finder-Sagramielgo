@@ -45,7 +45,7 @@ function getDataFromApi() {
 
 //pintar nombre
 const showsContainerElement = document.querySelector('.js-showsContainer');
-const placeholderImg = 'https://via.placeholder.com/210x295/ffffff/666666/?';
+
 function paintSeries() {
   console.log('Estoy pintando esto:', series);
   let codeHTML = '';
@@ -65,6 +65,10 @@ function paintSeries() {
   }
   showsContainerElement.innerHTML = codeHTML;
 }
+
+const placeholderImg =
+  'https://via.placeholder.com/210x295/add8e6/000ff0/?text=';
+
 paintSeries();
 //start api
 getDataFromApi();
