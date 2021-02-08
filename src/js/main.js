@@ -103,8 +103,8 @@ function listenSerieEvents() {
     seriesElement.addEventListener('click', handleSerie);
   }
 }
-function handleSerie() {
-  console.log('me han clikado');
+function handleSerie(ev) {
+  console.log('me han clikado', ev.currentTarge);
 }
 
 // EVENTO click al botón de buscar

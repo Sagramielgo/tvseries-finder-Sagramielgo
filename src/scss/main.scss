@@ -1,0 +1,11 @@
+@import './core/reset';
+
+.cardSection {
+  width: 100%;
+  display: flex;
+}
+.showsContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
