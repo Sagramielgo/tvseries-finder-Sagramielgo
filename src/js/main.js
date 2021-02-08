@@ -6,13 +6,13 @@
    1.2 EVENTO: Escuchar botón de búsqueda con el contenido del value.OK
    1.3 PINTAR las series OK
 
-2. FILTRAR: recoger el valor del input y filtrar las series
-   3.1 PINTAR series
-   3.2 ESCUCHAR eventos en las series (al clickar en ellas que cambien de color, o algún cambio)
+2. FILTRAR: recoger el valor del input y filtrar las series OK
+   2.1 PINTAR series OK
+   2.2 ESCUCHAR eventos en las series (al clickar en ellas que cambien de color, o algún cambio)
  
  3. EVENTO: clicar en una de las series y:
-   2.1 Marcar o desmarcar dicha serie de una sección de "favoritas" en los datos
-   2.3 PINTAR de nuevo las series
+   3.1 Marcar o desmarcar dicha serie de una sección de "favoritas" en los datos
+   3.2 PINTAR de nuevo las series
 
    4. Meter en un array las favoritas
    4.1 Pintar el array de favoritas en la izq de la pantalla (section, div, aside?)
@@ -51,12 +51,12 @@ function handleForm(ev) {
 }
 formElement.addEventListener('submit', handleForm);
 
-// filtrar input
+/* // filtrar input
 function handleFilter() {
   console.log('filtrando');
   paintSeries();
 }
-inputElement.addEventListener('change', handleFilter);
+inputElement.addEventListener('keyup', handleFilter); */
 
 //PINTAR en HTML
 function paintSeries() {
@@ -87,6 +87,15 @@ function paintSeries() {
     codeHTML += `</li>`;
   }
   showsContainerElement.innerHTML = codeHTML;
+
+  //SELECCIONAR SERIES
+  const seriesElements = document.querySelectorAll('.js-seriesCard');
+  for (const seriesElement of seriesElements) {
+    seriesElement.addEventListener('click', handleSerie);
+  }
+}
+function handleSerie() {
+  console.log('me han clikado');
 }
 
 //serie válida o no
