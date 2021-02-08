@@ -1,8 +1,8 @@
 'use strict';
 
 /* DIAGRAMA 
-1. Arrancar la página.
-   1.1 Coger datos del api con un Fetch
+1. Arrancar la página. OK
+   1.1 Coger datos del api con un Fetch OK
    1.2 EVENTO: Excuchar botón de búsqueda con el contenido del value.
    1.3 PINTAR las series
 
@@ -27,13 +27,17 @@
 // variable de los datos que me devuelve el api
 let series = [];
 const inputElement = document.querySelector('.js-input');
-
+const inputValue = inputElement.value;
 //CREAR función y meter api dentro
 function getDataFromApi() {
-  fetch(`http://api.tvmaze.com/search/shows?q=${inputElement.value}`)
+  fetch(`http://api.tvmaze.com/search/shows?q=${inputValue}`)
     .then((response) => response.json())
+    //for para saltarnos el 'score' y que data nos devuelva directamente 'show'
     .then((data) => {
-      series = series.push(data);
+      for (let index = 0; index < data.length; index++) {
+        const showList = data[index].show;
+        series.push(showList);
+      }
       console.log(series);
       paintSeries();
     });
