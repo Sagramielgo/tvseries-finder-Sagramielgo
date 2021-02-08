@@ -45,15 +45,21 @@ function getDataFromApi() {
 
 //pintar nombre
 const showsContainerElement = document.querySelector('.js-showsContainer');
+const placeholderImg = 'https://via.placeholder.com/210x295/ffffff/666666/?';
 function paintSeries() {
   console.log('Estoy pintando esto:', series);
   let codeHTML = '';
   for (let index = 0; index < series.length; index++) {
     const name = series[index].name;
     const id = series[index].id;
+    const image = series[index].image;
     codeHTML += `<li class="seriesCard js-seriesCard" id="${id}">`;
     codeHTML += `<div class="imgContainer">`;
-    codeHTML += '</div>';
+    if (image) {
+      codeHTML += `<img src="${image.medium}" class="series-image js-series-image" alt="Cover image for ${name}" /></a></div>`;
+    } else {
+      codeHTML += `<img src="${placeholderImg}${name}" class="series-image js-series-image" alt="Cover image for ${name}" /></a></div>`;
+    }
     codeHTML += `<h3 class="series-title js-seriesTitle">${name}</h3>`;
     codeHTML += `</li>`;
   }
