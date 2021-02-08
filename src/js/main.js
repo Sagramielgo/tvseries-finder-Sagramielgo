@@ -27,10 +27,15 @@
 // variable de los datos que me devuelve el api
 let series = [];
 
-//llamada al api y promesas
-fetch('http://api.tvmaze.com/search/shows?q=girls')
-  .then((response) => response.json())
-  .then((data) => {
-    series = data;
-    console.log(series);
-  });
+//CREAR función y meter api dentro
+function getDataFromApi() {
+  fetch('http://api.tvmaze.com/search/shows?q=girls')
+    .then((response) => response.json())
+    .then((data) => {
+      series = data;
+      console.log(series);
+    });
+}
+
+//start api
+getDataFromApi();
