@@ -68,27 +68,25 @@ function paintSeries() {
     'https://via.placeholder.com/210x295/464686/ffffff/?text=';
 
   let codeHTML = '';
-  let isValidClass;
   let isFavoriteClass;
   for (let index = 0; index < series.length; index++) {
     const { name, id, image } = series[index];
 
-    for (const serie of series) {
+    /*   for (const serie of series) {
       //añadir clase hidden
       if (isValidSerie(serie)) {
         isValidClass = '';
       } else {
         isValidClass = 'series--hidden';
-      }
-      //añadir clase favorite
-      if (isFavoriteSerie(serie)) {
-        isFavoriteClass = 'series--favorite';
-      } else {
-        isFavoriteClass = '';
-      }
+      } */
+    //añadir clase favorite
+    if (isFavoriteSerie(series[index])) {
+      isFavoriteClass = 'series--favorite';
+    } else {
+      isFavoriteClass = '';
     }
 
-    codeHTML += `<li class="seriesCard js-seriesCard ${isFavoriteClass} ${isValidClass}" id="${id}">`;
+    codeHTML += `<li class="seriesCard js-seriesCard ${isFavoriteClass}" id="${id}">`;
     codeHTML += `<article class="showCard js-showCard">`;
     codeHTML += `<h3 class="seriesTitle js-seriesTitle">${name}</h3>`;
     codeHTML += `<div class="imgContainer">`;
@@ -105,9 +103,9 @@ function paintSeries() {
 }
 
 //serie válida o no
-function isValidSerie(serie) {
+/* function isValidSerie(serie) {
   return serie.name.includes(inputElement.value);
-}
+} */
 
 //Devuelve serie seleccionada como favorita
 function isFavoriteSerie(serie) {
@@ -132,8 +130,13 @@ function listenSerieEvents() {
 
 //Función que devuelve el id de la serie clikada
 function handleSerie(ev) {
-  const clickedSerieId = ev.currentTarget.id;
+  const clickedSerieId = parseInt(ev.currentTarget.id);
   console.log('me han clikado', clickedSerieId);
+  const serieFound = series.find(function (serie) {
+    return serie.id === clickedSerieId;
+  });
+
+  console.log(serieFound);
 }
 
 // EVENTO click al botón de buscar
