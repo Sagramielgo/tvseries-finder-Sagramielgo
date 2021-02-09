@@ -4,8 +4,14 @@
   width: 100%;
   display: flex;
 }
+.mainContainer {
+  display: flex;
+}
 .showsContainer {
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
+}
+
+.favoritesContainer {
+  widows: 50%;
 }
