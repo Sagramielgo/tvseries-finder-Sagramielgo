@@ -88,17 +88,17 @@ function paintFavorites() {
     const name = series[index].name;
     const image = series[index].image; */
     const { name, id, image } = favorites[index];
-    codeHTML += `<li class="seriesCard js-seriesCard" id="${id}">`;
-    codeHTML += `<article class="showCard js-showCard">`;
-    codeHTML += `<h3 class="seriesTitle js-seriesTitle">${name}</h3>`;
+    codeHTML += `<li class="favoriteCard js-seriesCard" id="${id}">`;
+    codeHTML += `<article class="favoriteShow js-showCard">`;
+    codeHTML += `<h3 class="favoriteTitle js-seriesTitle">${name}</h3>`;
     codeHTML += '<button class="deleteButton">';
     codeHTML += '<i class="far fa-trash-alt"></i>';
     codeHTML += '</button>';
-    codeHTML += `<div class="imgContainer">`;
+    codeHTML += `<div class="imgFavoriteContainer">`;
     if (image) {
-      codeHTML += `<img src="${image.medium}" class="seriesImage js-seriesImage" alt="${name}" /></a></div>`;
+      codeHTML += `<img src="${image.medium}" class="favoriteImage js-seriesImage" alt="${name}" /></a></div>`;
     } else {
-      codeHTML += `<img src="${placeholderImg}${name}" class="seriesImage js-seriesImage" alt="${name}" /></a></div>`;
+      codeHTML += `<img src="${placeholderImg}${name}" class="favoriteImage js-seriesImage" alt="${name}" /></a></div>`;
     }
     codeHTML += `</article>`;
     codeHTML += `</li>`;
