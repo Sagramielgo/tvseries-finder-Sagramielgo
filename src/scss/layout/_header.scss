@@ -8,9 +8,9 @@
 .header {
   width: 100%;
   height: 120px;
-  /*  top: 0;
+  top: 0;
   position: fixed;
-  z-index: 1; */
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,7 +22,7 @@
   & .headerTitle {
     cursor: pointer;
     text-align: center;
-    font-size: 30px;
+    font-size: 35px;
     font-family: $fontBrand;
     color: lightblue;
     padding: 15px 0;
@@ -57,14 +57,15 @@
 
 .form {
   display: flex;
-  width: 200px;
+  width: 210px;
   border-radius: 10px;
   border: 1px solid grey;
   background-color: rgb(240, 239, 236);
   align-self: center;
 
   @media all and (min-width: 768px) {
-    width: 260px;
+    width: 280px;
+    height: 40px;
   }
 }
 
@@ -73,22 +74,27 @@
   color: rgb(75, 75, 128);
   background-color: whitesmoke;
   align-items: center;
-  height: 29px;
-  width: 160px;
+  height: 30px;
+  width: 170px;
   border-radius: 10px;
   font-family: $fontBrand;
   font-size: 18px;
   font-weight: bold;
-  padding-left: 5px;
+  padding-left: 10px;
 
   @media all and (min-width: 768px) {
-    width: 220px;
+    font-size: 22px;
+    width: 235px;
+    height: 38px;
   }
 }
 .input::placeholder {
   color: lightslategrey;
   font-size: 16px;
   font-weight: normal;
+  @media all and (min-width: 768px) {
+    font-size: 20px;
+  }
 }
 
 .input:focus {
@@ -107,6 +113,9 @@
   color: rgb(64, 41, 179);
   padding-top: 5px;
   font-size: 20px;
+  @media all and (min-width: 768px) {
+    height: 38px;
+  }
 }
 
 .searchButton:focus {

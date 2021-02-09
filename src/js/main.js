@@ -77,7 +77,7 @@ function paintSeries() {
 function paintFavorites() {
   //imagen por defecto
   const placeholderImg =
-    'https://via.placeholder.com/210x295/464686/ffffff/?text=';
+    'https://via.placeholder.com/210x295/8ec0f0/1f154e/?text=';
 
   let codeHTML = '';
   codeHTML += `<h2 class="favoritesTitle">`;

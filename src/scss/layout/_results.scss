@@ -1,5 +1,9 @@
 .mainContainer {
   display: flex;
+  margin-top: 120px;
+  @media all and (min-width: 780px) {
+    margin-top: 160px;
+  }
 }
 
 .showsContainer {
@@ -13,8 +17,9 @@
   height: 250px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin: 15px;
   border-radius: 20px;
   transition-property: transform 0.5 ease, box-shadow;
   transition-duration: 0.3s;
@@ -34,7 +39,7 @@
   @media all and (min-width: 768px) {
     margin: 25px;
     width: 190px;
-    height: 320px;
+    height: 300px;
   }
   @media all and (min-width: 1200px) {
     width: 230px;
@@ -44,7 +49,7 @@
 .seriesTitle {
   color: rgb(52, 52, 107);
   font-size: 16px;
-  padding: 7px;
+  padding: 7px 0;
   text-align: center;
   font-family: $fontBrand;
   word-wrap: break-word;
@@ -54,7 +59,7 @@
     padding: 10px;
   }
   @media all and (min-width: 1200px) {
-    font-size: 24px;
+    font-size: 22px;
     padding: 10px;
   }
 }
@@ -62,13 +67,15 @@
   width: 140px;
   height: 200px;
   align-items: center;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
 
   @media all and (min-width: 768px) {
-    width: 190px;
-    height: 240px;
+    width: 180px;
+    height: 250px;
   }
   @media all and (min-width: 1200px) {
-    width: 230px;
+    width: 220px;
     height: 280px;
   }
 }
