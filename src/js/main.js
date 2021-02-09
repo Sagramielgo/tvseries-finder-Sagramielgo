@@ -51,12 +51,14 @@ function handleForm(ev) {
 }
 formElement.addEventListener('submit', handleForm);
 
-/* // filtrar input
+//filtrar input
 function handleFilter() {
   console.log('filtrando');
+  series = [];
+  getDataFromApi();
   paintSeries();
 }
-inputElement.addEventListener('keyup', handleFilter); */
+inputElement.addEventListener('keyup', handleFilter);
 
 //PINTAR en HTML
 function paintSeries() {
@@ -65,17 +67,18 @@ function paintSeries() {
     'https://via.placeholder.com/210x295/add8e6/000ff0/?text=';
 
   let codeHTML = '';
-  for (const serie of series) {
-    if (isValidSerie(serie)) {
-      codeHTML += `<li class="seriesCard">`;
-    } else {
-      `<li class="serie--hidden>`;
-    }
-  }
+
   for (let index = 0; index < series.length; index++) {
     const { name, id, image } = series[index];
+    for (const serie of series) {
+      if (isValidSerie(serie)) {
+        codeHTML += `<li class="seriesCard js-seriesCard" id="${id}">`;
+      } else {
+        codeHTML += `<li class="seriesCard js-seriesCard series--hidden" id="${id}">`;
+      }
+    }
     codeHTML += `<li class="seriesCard js-seriesCard">`;
-    codeHTML += `<article id="${id}">`;
+    codeHTML += `<article class="showCard js-showCard">`;
     codeHTML += `<h3 class="seriesTitle js-seriesTitle">${name}</h3>`;
     codeHTML += `<div class="imgContainer">`;
     if (image) {
