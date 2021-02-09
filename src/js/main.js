@@ -29,6 +29,7 @@ const inputElement = document.querySelector('.js-input');
 
 // variable de los datos que me devuelve el api
 let series = [];
+let favorites = [];
 
 //CREAR función y meter api dentro
 function getDataFromApi() {
@@ -64,20 +65,21 @@ inputElement.addEventListener('keyup', handleFilter);
 function paintSeries() {
   //imagen por defecto
   const placeholderImg =
-    'https://via.placeholder.com/210x295/add8e6/000ff0/?text=';
+    'https://via.placeholder.com/210x295/464686/ffffff/?text=';
 
   let codeHTML = '';
-
+  let isValidClass;
   for (let index = 0; index < series.length; index++) {
     const { name, id, image } = series[index];
+    //añadir clase hidden
     for (const serie of series) {
       if (isValidSerie(serie)) {
-        codeHTML += `<li class="seriesCard js-seriesCard" id="${id}">`;
+        isValidClass = '';
       } else {
-        codeHTML += `<li class="seriesCard js-seriesCard series--hidden" id="${id}">`;
+        isValidClass = 'series--hidden';
       }
     }
-    codeHTML += `<li class="seriesCard js-seriesCard">`;
+    codeHTML += `<li class="seriesCard js-seriesCard ${isValidClass}" id="${id}">`;
     codeHTML += `<article class="showCard js-showCard">`;
     codeHTML += `<h3 class="seriesTitle js-seriesTitle">${name}</h3>`;
     codeHTML += `<div class="imgContainer">`;
@@ -100,14 +102,13 @@ function isValidSerie(serie) {
 
 //LISTEN serie Events
 function listenSerieEvents() {
-  //SELECCIONAR SERIES
   const seriesElements = document.querySelectorAll('.js-seriesCard');
   for (const seriesElement of seriesElements) {
     seriesElement.addEventListener('click', handleSerie);
   }
 }
 function handleSerie(ev) {
-  console.log('me han clikado', ev.currentTarge);
+  console.log('me han clikado', ev.currentTarget);
 }
 
 // EVENTO click al botón de buscar
