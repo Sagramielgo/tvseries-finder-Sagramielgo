@@ -1,35 +1,11 @@
 'use strict';
 
-/* DIAGRAMA 
-1. Arrancar la página. OK
-   1.1 Coger datos del api con un Fetch OK
-   1.2 EVENTO: Escuchar botón de búsqueda con el contenido del value.OK
-   1.3 PINTAR las series OK
-
-2. FILTRAR: recoger el valor del input y filtrar las series OK
-   2.1 PINTAR series OK
-   2.2 ESCUCHAR eventos en las series (al clickar en ellas que cambien de color, o algún cambio) OK
- 
- 3. EVENTO: clicar en una de las series y:OK
-   3.1 Marcar o desmarcar dicha serie de una sección de "favoritas" en los datosOK
-   3.2 PINTAR de nuevo las seriesOK
-
-   4. Meter en un array las favoritasOK
-   4.1 Pintar el array de favoritas en la izq de la pantalla (section, div, aside?)OK
-   4.2 Guardar favoritas en localSorage OK
-   4.3 add css
-
-   BONUS:
-    5. Escuchar botón borrar cada serie de favoritos
-    5.1 botón borrar todos los favoritos
-*/
 const formElement = document.querySelector('.js-form');
 const searchBtnElement = document.querySelector('.js-searchButton');
 const showsContainerElement = document.querySelector('.js-showsContainer');
 const inputElement = document.querySelector('.js-input');
 const favoritesBoxElement = document.querySelector('.js-favoritesContainer');
 let favorites = [];
-/* favorites = favoritesBoxElement.innerHTML; */
 
 // variable de los datos que me devuelve el api
 let series = [];
@@ -58,8 +34,8 @@ formElement.addEventListener('submit', handleForm);
 
 //filtrar input
 function handleFilter() {
-  getFromLocalStorage();
-  paintFavorites();
+  getFromLocalStorage(); //comprobar si hay favoritas en el localStorage
+  paintFavorites(); //Si hay, pintarlas
   getDataFromApi();
   paintSeries();
 }
@@ -67,7 +43,7 @@ inputElement.addEventListener('keyup', handleFilter);
 
 //PINTAR busqueda de API en HTML
 function paintSeries() {
-  //imagen por defecto
+  //si no hay, imagen por defecto
   const placeholderImg =
     'https://via.placeholder.com/210x295/464686/ffffff/?text=';
 
@@ -104,6 +80,9 @@ function paintFavorites() {
     'https://via.placeholder.com/210x295/464686/ffffff/?text=';
 
   let codeHTML = '';
+  codeHTML += `<h2 class="favoritesTitle">`;
+  codeHTML += 'FAVORITOS';
+  codeHTML += `</h2>`;
   for (let index = 0; index < favorites.length; index++) {
     /* const id = series[index].id;
     const name = series[index].name;
@@ -112,6 +91,9 @@ function paintFavorites() {
     codeHTML += `<li class="seriesCard js-seriesCard" id="${id}">`;
     codeHTML += `<article class="showCard js-showCard">`;
     codeHTML += `<h3 class="seriesTitle js-seriesTitle">${name}</h3>`;
+    codeHTML += '<button class="deleteButton">';
+    codeHTML += '<i class="far fa-trash-alt"></i>';
+    codeHTML += '</button>';
     codeHTML += `<div class="imgContainer">`;
     if (image) {
       codeHTML += `<img src="${image.medium}" class="seriesImage js-seriesImage" alt="${name}" /></a></div>`;
@@ -153,7 +135,6 @@ function getFromLocalStorage() {
     //función para convertir el localStorage en array
     const arrayFavorites = JSON.parse(localStorageFavorites);
     favorites = arrayFavorites;
-    /*   console.log(palettes); */
   }
 }
 
@@ -171,7 +152,6 @@ function listenSerieEvents() {
 function handleSerie(ev) {
   const clickedSerieId = parseInt(ev.currentTarget.id);
 
-  console.log('me han clikado', clickedSerieId);
   const serieFound = series.find(function (serie) {
     return serie.id === clickedSerieId;
   });
@@ -187,12 +167,9 @@ function handleSerie(ev) {
   } else {
     favorites.splice(favoriteFoundIndex, 1);
   }
-  console.log(favorites);
+
   paintFavorites();
 }
-
-/* setInLocalStorage();
-getFromLocalStorage(); */
 
 // EVENTO click al botón de buscar
 function handleInputSearch() {
