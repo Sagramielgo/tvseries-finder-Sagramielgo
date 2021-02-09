@@ -8,15 +8,16 @@
 
 2. FILTRAR: recoger el valor del input y filtrar las series OK
    2.1 PINTAR series OK
-   2.2 ESCUCHAR eventos en las series (al clickar en ellas que cambien de color, o algún cambio)
+   2.2 ESCUCHAR eventos en las series (al clickar en ellas que cambien de color, o algún cambio) OK
  
- 3. EVENTO: clicar en una de las series y:
-   3.1 Marcar o desmarcar dicha serie de una sección de "favoritas" en los datos
-   3.2 PINTAR de nuevo las series
+ 3. EVENTO: clicar en una de las series y:OK
+   3.1 Marcar o desmarcar dicha serie de una sección de "favoritas" en los datosOK
+   3.2 PINTAR de nuevo las seriesOK
 
-   4. Meter en un array las favoritas
-   4.1 Pintar el array de favoritas en la izq de la pantalla (section, div, aside?)
-   4.2 Guardar favoritas en localSorage
+   4. Meter en un array las favoritasOK
+   4.1 Pintar el array de favoritas en la izq de la pantalla (section, div, aside?)OK
+   4.2 Guardar favoritas en localSorage OK
+   4.3 add css
 
    BONUS:
     5. Escuchar botón borrar cada serie de favoritos

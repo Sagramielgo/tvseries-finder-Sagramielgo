@@ -1,1 +1,118 @@
+.pageContainer {
+  width: 100%;
+  min-height: 100vh;
+  background: url('../../assets/images/fantastic-car.jpg') no-repeat center
+    center;
+  background-size: cover;
+}
+.header {
+  width: 100%;
+  height: 120px;
+  /*  top: 0;
+  position: fixed;
+  z-index: 1; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(62, 31, 90, 0.5);
+  @media all and (min-width: 768px) {
+    height: 160px;
+  }
 
+  & .headerTitle {
+    cursor: pointer;
+    text-align: center;
+    font-size: 30px;
+    font-family: $fontBrand;
+    color: lightblue;
+    padding: 15px 0;
+
+    @media all and (min-width: 768px) {
+      font-size: 46px;
+      padding: 25px 0;
+    }
+
+    @media all and (min-width: 1200px) {
+      text-align: center;
+    }
+
+    & .label {
+      border: 2px solid grey;
+      background-color: lightslategray;
+      align-items: center;
+      height: 28px;
+      width: 220px;
+      border-radius: 10px;
+      font-family: $fontBrand;
+      font-weight: bold;
+    }
+  }
+}
+.icon {
+  cursor: pointer;
+  width: 90%;
+  height: 27px;
+  margin-left: 5px;
+}
+
+.form {
+  display: flex;
+  width: 200px;
+  border-radius: 10px;
+  border: 1px solid grey;
+  background-color: rgb(240, 239, 236);
+  align-self: center;
+
+  @media all and (min-width: 768px) {
+    width: 260px;
+  }
+}
+
+.input {
+  border: none;
+  color: rgb(75, 75, 128);
+  background-color: whitesmoke;
+  align-items: center;
+  height: 29px;
+  width: 160px;
+  border-radius: 10px;
+  font-family: $fontBrand;
+  font-size: 18px;
+  font-weight: bold;
+  padding-left: 5px;
+
+  @media all and (min-width: 768px) {
+    width: 220px;
+  }
+}
+.input::placeholder {
+  color: lightslategrey;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.input:focus {
+  outline: none;
+  outline-width: 0;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+.searchButton {
+  border: none;
+  width: 30px;
+  height: 29px;
+  cursor: pointer;
+  color: rgb(64, 41, 179);
+  padding-top: 5px;
+  font-size: 20px;
+}
+
+.searchButton:focus {
+  outline: none;
+  outline-width: 0;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}

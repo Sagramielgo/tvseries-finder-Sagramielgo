@@ -1,17 +1,5 @@
+@import './core/variables';
 @import './core/reset';
-
-.cardSection {
-  width: 100%;
-  display: flex;
-}
-.mainContainer {
-  display: flex;
-}
-.showsContainer {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.favoritesContainer {
-  widows: 50%;
-}
+@import './layout/header';
+@import './layout/results';
+@import './layout/favorites';
