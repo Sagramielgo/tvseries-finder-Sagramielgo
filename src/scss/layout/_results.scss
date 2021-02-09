@@ -2,7 +2,92 @@
   display: flex;
 }
 
-.cardSection {
+.showsContainer {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
+}
+.showCard {
+  cursor: pointer;
+  width: 200px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  transition-property: transform 0.5 ease, box-shadow;
+  transform: perspective(1px) translateZ(0);
+  transition-duration: 0.3s;
+  box-shadow: inset 0 0 0 4px #e1e1e1, 0px 0px 10px 1px rgba(0, 0, 0, 0.64);
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+  @media all and (min-width: 768px) {
+    margin: 25px;
+    width: 190px;
+    height: 320px;
+  }
+  @media all and (min-width: 1200px) {
+    width: 230px;
+    height: 370px;
+  }
+}
+.seriesTitle {
+  color: rgb(52, 52, 107);
+  font-size: 16px;
+  padding: 7px;
+  text-align: center;
+  font-family: $font-secondary;
+  word-wrap: break-word;
+
+  @media all and (min-width: 768px) {
+    font-size: 19px;
+    padding: 10px;
+  }
+  @media all and (min-width: 1200px) {
+    font-size: 24px;
+    padding: 10px;
+  }
+}
+.seriesImage {
+  width: 140px;
+  height: 200px;
+  align-items: center;
+
+  @media all and (min-width: 768px) {
+    width: 190px;
+    height: 240px;
+  }
+  @media all and (min-width: 1200px) {
+    width: 230px;
+    height: 280px;
+  }
+}
+.content__boxTitle {
+  margin-top: 5px;
+  width: 140px;
+  height: 40px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media all and (min-width: 768px) {
+    width: 190px;
+    height: 60px;
+  }
+  @media all and (min-width: 1200px) {
+    width: 230px;
+    height: 80px;
+  }
 }
