@@ -108,9 +108,18 @@ function paintSeries() {
 function isValidSerie(serie) {
   return serie.name.includes(inputElement.value);
 }
+
+//Devuelve serie seleccionada como favorita
 function isFavoriteSerie(serie) {
-  console.log(serie);
-  return false;
+  const favoriteFound = favorites.find((favorite) => {
+    return favorite.id === serie.id;
+  });
+
+  if (favoriteFound === undefined) {
+    return false;
+  } else {
+    return true;
+  }
 }
 
 //LISTEN serie Events
