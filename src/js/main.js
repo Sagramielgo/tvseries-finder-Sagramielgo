@@ -129,8 +129,11 @@ function listenSerieEvents() {
     seriesElement.addEventListener('click', handleSerie);
   }
 }
+
+//Función que devuelve el id de la serie clikada
 function handleSerie(ev) {
-  console.log('me han clikado', ev.currentTarget);
+  const clickedSerieId = ev.currentTarget.id;
+  console.log('me han clikado', clickedSerieId);
 }
 
 // EVENTO click al botón de buscar
