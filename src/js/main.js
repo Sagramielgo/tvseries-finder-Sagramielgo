@@ -69,17 +69,26 @@ function paintSeries() {
 
   let codeHTML = '';
   let isValidClass;
+  let isFavoriteClass;
   for (let index = 0; index < series.length; index++) {
     const { name, id, image } = series[index];
-    //añadir clase hidden
+
     for (const serie of series) {
+      //añadir clase hidden
       if (isValidSerie(serie)) {
         isValidClass = '';
       } else {
         isValidClass = 'series--hidden';
       }
+      //añadir clase favorite
+      if (isFavoriteSerie(serie)) {
+        isFavoriteClass = 'series--favorite';
+      } else {
+        isFavoriteClass = '';
+      }
     }
-    codeHTML += `<li class="seriesCard js-seriesCard ${isValidClass}" id="${id}">`;
+
+    codeHTML += `<li class="seriesCard js-seriesCard ${isFavoriteClass} ${isValidClass}" id="${id}">`;
     codeHTML += `<article class="showCard js-showCard">`;
     codeHTML += `<h3 class="seriesTitle js-seriesTitle">${name}</h3>`;
     codeHTML += `<div class="imgContainer">`;
@@ -98,6 +107,10 @@ function paintSeries() {
 //serie válida o no
 function isValidSerie(serie) {
   return serie.name.includes(inputElement.value);
+}
+function isFavoriteSerie(serie) {
+  console.log(serie);
+  return false;
 }
 
 //LISTEN serie Events
