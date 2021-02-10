@@ -3,31 +3,36 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>EVALUACIÓN FINAL 2 Sagra Mielgo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="./assets/images/logoTv.png" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/main.css" />
+  <script src="https://kit.fontawesome.com/7fa95d1a39.js" crossorigin="anonymous"></script>
+  <title>EVALUACIÓN FINAL 2 Sagra Mielgo</title>
 </head>
 
-<body>
-  <header>
-    <h1 class="pageTitle">
-      Encuentra tu serie.
+<body class="pageContainer">
+  <header class="header">
+    <h1 class="headerTitle">
+      Encuentra tu serie
     </h1>
-    <form class="js-form">
-      <label class="input_search" for="search">
-        <input class="js-input" type="text" id="search" placeholder="Introduce una serie" />
+    <form class=" js-form contentForm form">
+      <label class="label" for="search">
+        <input class="input js-input" type="text" id="search" placeholder="Introduce una serie" />
       </label>
-      <button class="js-searchButton" type="button">
-        Buscar
+      <button class="searchButton js-searchButton">
+        <i class="icon js-search fas fa-search"></i>
+      </button>
+      <button class="reloadButton js-reloadButton">
+        <i class=" js-reloadIcon fas fa-redo-alt"></i>
       </button>
     </form>
   </header>
   <main class="mainContainer">
-    <h1>Favoritos</h1>
     <section class="favoritesContainer js-favoritesContainer">
     </section>
-    <section class="cardSection">
-      <h1>Resultados</h1>
+    <section class="resultsSection">
       <ul class="showsContainer js-showsContainer">
       </ul>
     </section>
