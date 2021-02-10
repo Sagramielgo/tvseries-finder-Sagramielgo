@@ -5,12 +5,14 @@ const searchBtnElement = document.querySelector('.js-searchButton');
 const showsContainerElement = document.querySelector('.js-showsContainer');
 const inputElement = document.querySelector('.js-input');
 const favoritesBoxElement = document.querySelector('.js-favoritesContainer');
+
 //variable para introducir las seleccionadas como favoritas
 let favorites = [];
+
 // variable de los datos que me devuelve el api
 let series = [];
 
-//CREAR función y meter api dentro
+//CREAR función y meter llamada API dentro
 function getDataFromApi() {
   const inputValue = inputElement.value;
   fetch(`http://api.tvmaze.com/search/shows?q=${inputValue}`)
@@ -26,13 +28,13 @@ function getDataFromApi() {
     });
 }
 
-// evitar que envíe el input por defecto
+// evitar que envíe el input del form por defecto
 function handleForm(ev) {
   ev.preventDefault();
 }
 formElement.addEventListener('submit', handleForm);
 
-//filtrar input
+//EVENTO filtrar input con cada tecla que pulse la usuaria
 function handleFilter() {
   paintFavorites(); //Si hay === true, pintarlas
   getDataFromApi();
@@ -51,6 +53,7 @@ function paintSeries() {
   for (let index = 0; index < series.length; index++) {
     const { name, id, image } = series[index];
 
+    //le añade la clase favorite con una función
     if (isFavoriteSerie(series[index])) {
       isFavoriteClass = 'series--favorite';
     } else {
@@ -71,18 +74,17 @@ function paintSeries() {
   showsContainerElement.innerHTML = codeHTML;
   listenSerieEvents();
 }
+
 // compruebo si la serie que recibo por parámetro está en los favoritos
 function isFavoriteSerie(serie) {
   const favoriteFound = favorites.find((favorite) => {
     return favorite.id === serie.id;
   });
-  // find devuelve undefined si no lo encuentra
-  // retorno si está o no está en favoritos
-
   if (favoriteFound === undefined) {
+    // find devuelve undefined si no lo encuentra
     return false;
   } else {
-    return true;
+    return true; // retorno si está o no está en favoritos
   }
 }
 
@@ -93,7 +95,7 @@ function paintFavorites() {
     favoritesBoxElement.innerHTML = '';
     return;
   }
-  //imagen por defecto
+  //imagen por defecto si no la tiene
   const placeholderImg =
     'https://via.placeholder.com/210x295/8ec0f0/1f154e/?text=';
 
@@ -121,10 +123,9 @@ function paintFavorites() {
     codeHTML += `</article>`;
     codeHTML += `</li>`;
   }
-
   favoritesBoxElement.innerHTML = codeHTML;
-  //EVENTO borrar todos los favoritos
 
+  //EVENTO borrar todos los favoritos
   const deleteAllElement = document.querySelector('.js-deleteAll');
   deleteAllElement.addEventListener('click', handleDeleteAllFav);
 
@@ -150,7 +151,7 @@ function getFromLocalStorage() {
   }
 }
 
-//LISTEN serie Events
+//EVENTO de escucha serie Events que ejecuta guardar favoritas en local Storage
 function listenSerieEvents() {
   setInLocalStorage();
   const seriesElements = document.querySelectorAll('.js-seriesCard');
@@ -191,14 +192,14 @@ function handleInputSearch() {
 }
 searchBtnElement.addEventListener('click', handleInputSearch);
 
-//EVENTO recargar página
+//EVENTO recargar página al pulsr botón
 const reloadElement = document.querySelector('.js-reloadButton');
 function handleReload() {
   location.reload();
 }
-
 reloadElement.addEventListener('click', handleReload);
 
+//función que ejecuta el evento de escucha de la línea 132
 function handleDeleteAllFav() {
   favorites = [];
   paintSeries();
@@ -207,5 +208,4 @@ function handleDeleteAllFav() {
 }
 
 // start app
-
 getFromLocalStorage();
