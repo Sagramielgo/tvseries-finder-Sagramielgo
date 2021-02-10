@@ -13,30 +13,8 @@
 </head>
 
 <body class="pageContainer">
-  <header class="header">
-    <h1 class="headerTitle">
-      Encuentra tu serie
-    </h1>
-    <form class=" js-form contentForm form">
-      <label class="label" for="search">
-        <input class="input js-input" type="text" id="search" placeholder="Introduce una serie" />
-      </label>
-      <button class="searchButton js-searchButton">
-        <i class="icon js-search fas fa-search"></i>
-      </button>
-      <button class="reloadButton js-reloadButton">
-        <i class=" js-reloadIcon reloadIcon fas fa-redo-alt"></i>
-      </button>
-    </form>
-  </header>
-  <main class="mainContainer">
-    <section class="favoritesContainer js-favoritesContainer">
-    </section>
-    <section class="resultsSection">
-      <ul class="showsContainer js-showsContainer">
-      </ul>
-    </section>
-  </main>
+  <include src="./partials/header.html"></include>
+  <include src="./partials/main.html"></include>
   <script src="./assets/js/main.js"></script>
 </body>
 
