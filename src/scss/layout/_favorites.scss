@@ -1,4 +1,7 @@
 .favoritesContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 20px;
   background-color: rgba(60, 50, 148, 0.5);
   border-radius: 20px;
@@ -9,16 +12,33 @@
   font-weight: 500;
   font-family: $fontBrand;
   color: aliceblue;
-  padding: 15px;
+  padding: 15px 0 10px 0;
   @media all and (min-width: 768px) {
     font-weight: 700;
     font-size: 18px;
-    padding: 24px;
+    padding: 15px 0 15px 0;
   }
   @media all and (min-width: 1200px) {
     font-weight: 700;
     font-size: 24px;
-    padding: 20px;
+    /* padding: 20px; */
+  }
+}
+
+.deleteFavorites {
+  width: 80px;
+  height: 30px;
+  text-align: center;
+  background-color: salmon;
+  font-family: $fontBrand;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  border: 2px solid white;
+  transition-property: transform 0.5 ease;
+  transition-duration: 0.3s;
+  &:hover {
+    transform: scale(1.1);
   }
 }
 .favoriteShow {
@@ -34,14 +54,6 @@
   transition-property: transform 0.5 ease, box-shadow;
   transition-duration: 0.3s;
   box-shadow: inset 0 0 0 4px #e1e1e1, 0px 0px 10px 1px rgba(0, 0, 0, 0.64);
-  @keyframes fade-in {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
 
   &:hover {
     transform: scale(1.1);

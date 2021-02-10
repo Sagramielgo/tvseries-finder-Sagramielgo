@@ -58,14 +58,15 @@
 
 .form {
   display: flex;
-  width: 210px;
+  width: 250px;
+  height: 35px;
   border-radius: 10px;
   border: 1px solid grey;
   background-color: rgb(240, 239, 236);
   align-self: center;
 
   @media all and (min-width: 768px) {
-    width: 280px;
+    width: 320px;
     height: 40px;
   }
 }
@@ -109,17 +110,27 @@
 .searchButton,
 .reloadButton {
   border: none;
+  border-radius: 10px;
   width: 30px;
   height: 29px;
   cursor: pointer;
   color: rgb(64, 41, 179);
-  padding-top: 5px;
+  padding-top: 7px;
   font-size: 20px;
   @media all and (min-width: 768px) {
     height: 38px;
+    font-size: 24px;
   }
 }
-
+.reloadButton {
+  color: salmon;
+  margin-left: 15px;
+  @media all and (min-width: 768px) {
+    margin-left: 20px;
+    padding-bottom: 5px;
+    /*  font-size: 24px; */
+  }
+}
 .reloadButton:focus,
 .searchButton:focus {
   outline: none;
