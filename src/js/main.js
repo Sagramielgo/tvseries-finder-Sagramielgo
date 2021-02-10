@@ -34,7 +34,6 @@ formElement.addEventListener('submit', handleForm);
 
 //filtrar input
 function handleFilter() {
-  getFromLocalStorage(); //comprobar si hay favoritas en el localStorage
   paintFavorites(); //Si hay, pintarlas
   getDataFromApi();
   paintSeries();
@@ -57,8 +56,8 @@ function paintSeries() {
     } else {
       isFavoriteClass = '';
     }
-    codeHTML += `<li class="seriesCard js-seriesCard ${isFavoriteClass}" id="${id}">`;
-    codeHTML += `<article class="showCard js-showCard">`;
+    codeHTML += `<li class="seriesCard js-seriesCard " id="${id}">`;
+    codeHTML += `<article class="showCard ${isFavoriteClass} js-showCard">`;
     codeHTML += `<h3 class="seriesTitle js-seriesTitle">${name}</h3>`;
     codeHTML += `<div class="imgContainer">`;
     if (image) {
@@ -75,6 +74,10 @@ function paintSeries() {
 
 //PINTAR array favorites en HTML
 function paintFavorites() {
+  if (favorites.length === 0) {
+    favoritesBoxElement.innerHTML = '';
+    return;
+  }
   //imagen por defecto
   const placeholderImg =
     'https://via.placeholder.com/210x295/8ec0f0/1f154e/?text=';
@@ -83,10 +86,10 @@ function paintFavorites() {
   codeHTML += `<h2 class="favoritesTitle">`;
   codeHTML += 'FAVORITOS';
   codeHTML += `</h2>`;
+  codeHTML += '<button type="button" class="js-deleteAll deleteFavorites">';
+  codeHTML += 'Delete All';
+  codeHTML += `</button>`;
   for (let index = 0; index < favorites.length; index++) {
-    /* const id = series[index].id;
-    const name = series[index].name;
-    const image = series[index].image; */
     const { name, id, image } = favorites[index];
     codeHTML += `<li class="favoriteCard js-seriesCard" id="${id}">`;
     codeHTML += `<article class="favoriteShow js-showCard">`;
@@ -105,6 +108,10 @@ function paintFavorites() {
   }
 
   favoritesBoxElement.innerHTML = codeHTML;
+  //EVENTO borrar todos los favoritos
+  const deleteAllElement = document.querySelector('.js-deleteAll');
+  deleteAllElement.addEventListener('click', handleDeleteAllFav);
+
   listenSerieEvents();
 }
 
@@ -130,18 +137,18 @@ function setInLocalStorage() {
 function getFromLocalStorage() {
   const localStorageFavorites = localStorage.getItem('favorites');
   if (localStorageFavorites === null) {
-    getDataFromApi();
+    //getDataFromApi();
   } else {
     //función para convertir el localStorage en array
     const arrayFavorites = JSON.parse(localStorageFavorites);
     favorites = arrayFavorites;
+    paintFavorites();
   }
 }
 
 //LISTEN serie Events
 function listenSerieEvents() {
   setInLocalStorage();
-  getFromLocalStorage();
   const seriesElements = document.querySelectorAll('.js-seriesCard');
   for (const seriesElement of seriesElements) {
     seriesElement.addEventListener('click', handleSerie);
@@ -167,16 +174,34 @@ function handleSerie(ev) {
   } else {
     favorites.splice(favoriteFoundIndex, 1);
   }
-
+  paintSeries();
   paintFavorites();
 }
 
 // EVENTO click al botón de buscar
 function handleInputSearch() {
   series = [];
-  getFromLocalStorage();
   paintFavorites();
   getDataFromApi();
   paintSeries();
 }
 searchBtnElement.addEventListener('click', handleInputSearch);
+
+//EVENTO recargar página
+const reloadElement = document.querySelector('.js-reloadButton');
+function handleReload() {
+  location.reload();
+}
+
+reloadElement.addEventListener('click', handleReload);
+
+function handleDeleteAllFav() {
+  favorites = [];
+  paintSeries();
+  paintFavorites();
+  setInLocalStorage();
+}
+
+// start app
+
+getFromLocalStorage();
