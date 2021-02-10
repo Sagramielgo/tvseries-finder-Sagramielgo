@@ -123,12 +123,11 @@
   }
 }
 .reloadButton {
-  color: salmon;
+  color: rgb(238, 98, 82);
   margin-left: 15px;
   @media all and (min-width: 768px) {
     margin-left: 20px;
     padding-bottom: 5px;
-    /*  font-size: 24px; */
   }
 }
 .reloadButton:focus,

@@ -5,8 +5,8 @@ const searchBtnElement = document.querySelector('.js-searchButton');
 const showsContainerElement = document.querySelector('.js-showsContainer');
 const inputElement = document.querySelector('.js-input');
 const favoritesBoxElement = document.querySelector('.js-favoritesContainer');
+//variable para introducir las seleccionadas como favoritas
 let favorites = [];
-
 // variable de los datos que me devuelve el api
 let series = [];
 
@@ -34,7 +34,7 @@ formElement.addEventListener('submit', handleForm);
 
 //filtrar input
 function handleFilter() {
-  paintFavorites(); //Si hay, pintarlas
+  paintFavorites(); //Si hay === true, pintarlas
   getDataFromApi();
   paintSeries();
 }
@@ -42,7 +42,7 @@ inputElement.addEventListener('keyup', handleFilter);
 
 //PINTAR busqueda de API en HTML
 function paintSeries() {
-  //si no hay, imagen por defecto
+  //si no hay imagen, ésta por defecto
   const placeholderImg =
     'https://via.placeholder.com/210x295/464686/ffffff/?text=';
 
@@ -71,9 +71,24 @@ function paintSeries() {
   showsContainerElement.innerHTML = codeHTML;
   listenSerieEvents();
 }
+// compruebo si la serie que recibo por parámetro está en los favoritos
+function isFavoriteSerie(serie) {
+  const favoriteFound = favorites.find((favorite) => {
+    return favorite.id === serie.id;
+  });
+  // find devuelve undefined si no lo encuentra
+  // retorno si está o no está en favoritos
+
+  if (favoriteFound === undefined) {
+    return false;
+  } else {
+    return true;
+  }
+}
 
 //PINTAR array favorites en HTML
 function paintFavorites() {
+  //Condición para pintar en pantalla sección de favoritas. Si el array está vacío no la pinta.
   if (favorites.length === 0) {
     favoritesBoxElement.innerHTML = '';
     return;
@@ -109,24 +124,13 @@ function paintFavorites() {
 
   favoritesBoxElement.innerHTML = codeHTML;
   //EVENTO borrar todos los favoritos
+
   const deleteAllElement = document.querySelector('.js-deleteAll');
   deleteAllElement.addEventListener('click', handleDeleteAllFav);
 
   listenSerieEvents();
 }
 
-//Devuelve serie seleccionada como favorita
-function isFavoriteSerie(serie) {
-  const favoriteFound = favorites.find((favorite) => {
-    return favorite.id === serie.id;
-  });
-
-  if (favoriteFound === undefined) {
-    return false;
-  } else {
-    return true;
-  }
-}
 //guardar en localStorage
 function setInLocalStorage() {
   const stringFavorites = JSON.stringify(favorites);
@@ -157,7 +161,7 @@ function listenSerieEvents() {
 
 //Función que devuelve el id de la serie clikada
 function handleSerie(ev) {
-  const clickedSerieId = parseInt(ev.currentTarget.id);
+  const clickedSerieId = parseInt(ev.currentTarget.id); //pasarlo a number!!!
 
   const serieFound = series.find(function (serie) {
     return serie.id === clickedSerieId;
