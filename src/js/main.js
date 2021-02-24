@@ -54,11 +54,9 @@ function paintSeries() {
     const { name, id, image, schedule } = series[index];
 
     //le añade la clase favorite con una función
-    if (isFavoriteSerie(series[index])) {
-      isFavoriteClass = 'series--favorite';
-    } else {
-      isFavoriteClass = '';
-    }
+    isFavoriteSerie(series[index])
+      ? (isFavoriteClass = 'series--favorite')
+      : (isFavoriteClass = '');
     codeHTML += `<li class="seriesCard js-seriesCard " id="${id}">`;
     codeHTML += `<article class="showCard ${isFavoriteClass} js-showCard">`;
     codeHTML += `<h3 class="seriesTitle js-seriesTitle">${name}</h3>`;
