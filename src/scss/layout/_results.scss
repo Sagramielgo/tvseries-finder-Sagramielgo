@@ -54,7 +54,7 @@
 .seriesTitle {
   color: rgb(52, 52, 107);
   font-size: 16px;
-  padding: 7px 0 0 0;
+  padding: 7px 5px;
   text-align: center;
   font-family: $fontBrand;
   word-wrap: break-word;
@@ -95,6 +95,9 @@
 }
 .day {
   margin: 0 3px;
-  font-size: 16px;
+  font-size: 12px;
   font-family: $fontBrand;
+  @media all and (min-width: 768px) {
+    font-size: 19px;
+  }
 }
