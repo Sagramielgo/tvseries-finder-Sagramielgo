@@ -60,21 +60,20 @@
   @media all and (min-width: 768px) {
     margin: 15px;
     width: 130px;
-    height: 200px;
+    height: 210px;
   }
   @media all and (min-width: 1200px) {
     width: 180px;
-    height: 300px;
+    height: 310px;
   }
 }
 .favoriteTitle {
   color: whitesmoke;
-  font-size: 12px;
-  padding: 10px 0 5px 0;
+  font-size: 11px;
+  padding: 5px 5px 3px 5px;
   text-align: center;
-  font-weight: 500;
+  font-weight: 300;
   font-family: $fontBrand;
-  word-wrap: break-word;
 
   @media all and (min-width: 768px) {
     font-size: 14px;
@@ -85,17 +84,17 @@
 }
 .favoriteImage {
   width: 75px;
-  height: 90px;
+  height: 85px;
   border-radius: 15px;
   align-items: center;
 
   @media all and (min-width: 768px) {
     width: 100px;
-    height: 130px;
+    height: 120px;
   }
   @media all and (min-width: 1200px) {
     width: 150px;
-    height: 220px;
+    height: 210px;
   }
 }
 .deleteButton {

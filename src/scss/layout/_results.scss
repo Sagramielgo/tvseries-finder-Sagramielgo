@@ -44,7 +44,7 @@
   @media all and (min-width: 768px) {
     margin: 25px;
     width: 190px;
-    height: 350px;
+    height: 340px;
   }
   @media all and (min-width: 1200px) {
     width: 230px;
@@ -61,26 +61,27 @@
 
   @media all and (min-width: 768px) {
     font-size: 20px;
-    padding: 8px 0 5px 0;
+    padding: 8px 5px 5px 0;
   }
   @media all and (min-width: 1200px) {
+    padding: 8px 5px;
     font-size: 24px;
   }
 }
 .seriesImage {
   width: 140px;
-  height: 200px;
+  height: 180px;
   align-items: center;
   border-bottom-left-radius: 18px;
   border-bottom-right-radius: 18px;
 
   @media all and (min-width: 768px) {
     width: 180px;
-    height: 250px;
+    height: 220px;
   }
   @media all and (min-width: 1200px) {
     width: 220px;
-    height: 280px;
+    height: 270px;
   }
 }
 .series--favorite {

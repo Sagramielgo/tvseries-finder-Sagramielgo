@@ -87,10 +87,10 @@ function isFavoriteSerie(serie) {
     return favorite.id === serie.id;
   });
   if (favoriteFound === undefined) {
-    // find devuelve undefined si no lo encuentra
+    // find rturns undefined if it doesn't find it
     return false;
   } else {
-    return true; // retorno si está o no está en favoritos
+    return true; // returns if it is in favourites or not
   }
 }
 
