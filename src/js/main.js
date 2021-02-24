@@ -6,18 +6,18 @@ const showsContainerElement = document.querySelector('.js-showsContainer');
 const inputElement = document.querySelector('.js-input');
 const favoritesBoxElement = document.querySelector('.js-favoritesContainer');
 
-//variable para introducir las seleccionadas como favoritas
+//variable to create array of favourites
 let favorites = [];
 
-// variable de los datos que me devuelve el api
+// variable of data than API returns to us
 let series = [];
 
-//CREAR función y meter llamada API dentro
+//CREATE a function in order to put inside the fetch(call to API)
 function getDataFromApi() {
   const inputValue = inputElement.value;
   fetch(`http://api.tvmaze.com/search/shows?q=${inputValue}`)
     .then((response) => response.json())
-    //for para saltarnos el 'score' y que data nos devuelva directamente 'show'
+    //We're doing a 'for' to avoid 'score' and get directly what we need, which is 'show' in this case
     .then((data) => {
       series = [];
       for (let index = 0; index < data.length; index++) {
@@ -28,23 +28,23 @@ function getDataFromApi() {
     });
 }
 
-// evitar que envíe el input del form por defecto
+// avoid default sending of the input content in the form
 function handleForm(ev) {
   ev.preventDefault();
 }
 formElement.addEventListener('submit', handleForm);
 
-//EVENTO filtrar input con cada tecla que pulse la usuaria
+//EVENT filter input with every key that user presses
 function handleFilter() {
-  paintFavorites(); //Si hay === true, pintarlas
+  paintFavorites(); //If there are anyone, so === true, we need to paint them
   getDataFromApi();
   paintSeries();
 }
 inputElement.addEventListener('keyup', handleFilter);
 
-//PINTAR busqueda de API en HTML
+//Paint API search in HTML
 function paintSeries() {
-  //si no hay imagen, ésta por defecto
+  //If there is no image, this is the default one to put instead
   const placeholderImg =
     'https://via.placeholder.com/210x295/464686/ffffff/?text=';
 
@@ -53,7 +53,7 @@ function paintSeries() {
   for (let index = 0; index < series.length; index++) {
     const { name, id, image, schedule } = series[index];
 
-    //le añade la clase favorite con una función
+    //this add class 'favorite' by executing function
     isFavoriteSerie(series[index])
       ? (isFavoriteClass = 'series--favorite')
       : (isFavoriteClass = '');
@@ -61,14 +61,11 @@ function paintSeries() {
     codeHTML += `<article class="showCard ${isFavoriteClass} js-showCard">`;
     codeHTML += `<h3 class="seriesTitle js-seriesTitle">${name}</h3>`;
     if (schedule.days.length > 0) {
-      codeHTML += `<ul>`;
-      /*   for (let index = 0; index < schedule.days.length; index++) {
-      const daysShow = schedule.days[index];
-      codeHTML += `<li> ${daysShow}`;
-      codeHTML += `</li>`;
-    } */
-
-      codeHTML += `<li>` + schedule.days.join(`</li><li>`) + '</li>';
+      codeHTML += `<ul class="days">`;
+      codeHTML +=
+        `<li class="day" >` +
+        schedule.days.join(`</li><li class="day">`) +
+        '</li>';
       codeHTML += `</ul>`;
     }
     codeHTML += `<div class="imgContainer">`;
@@ -84,7 +81,7 @@ function paintSeries() {
   listenSerieEvents();
 }
 
-// compruebo si la serie que recibo por parámetro está en los favoritos
+// test if the show I am receiving by parameter is already in favourite list
 function isFavoriteSerie(serie) {
   const favoriteFound = favorites.find((favorite) => {
     return favorite.id === serie.id;
@@ -97,14 +94,14 @@ function isFavoriteSerie(serie) {
   }
 }
 
-//PINTAR array favorites en HTML
+//PAINT favorites array in HTML
 function paintFavorites() {
-  //Condición para pintar en pantalla sección de favoritas. Si el array está vacío no la pinta.
+  //Condition to paint favourite section in the window. If returns an empty array we won't paint the section.
   if (favorites.length === 0) {
     favoritesBoxElement.innerHTML = '';
     return;
   }
-  //imagen por defecto si no la tiene
+  //Default image in case the show doesn't have any.
   const placeholderImg =
     'https://via.placeholder.com/210x295/8ec0f0/1f154e/?text=';
 
@@ -134,33 +131,33 @@ function paintFavorites() {
   }
   favoritesBoxElement.innerHTML = codeHTML;
 
-  //EVENTO borrar todos los favoritos
+  //EVENT delete all favourites
   const deleteAllElement = document.querySelector('.js-deleteAll');
   deleteAllElement.addEventListener('click', handleDeleteAllFav);
 
   listenSerieEvents();
 }
 
-//guardar en localStorage
+//keep/set in localStorage
 function setInLocalStorage() {
   const stringFavorites = JSON.stringify(favorites);
   localStorage.setItem('favorites', stringFavorites);
 }
 
-//// recuperar data del localSt y si no llamar al api
+//// Get data from localSt and in case there isn't any data stored, then call API
 function getFromLocalStorage() {
   const localStorageFavorites = localStorage.getItem('favorites');
   if (localStorageFavorites === null) {
     //getDataFromApi();
   } else {
-    //función para convertir el localStorage en array
+    //Function to transform localStorage into array
     const arrayFavorites = JSON.parse(localStorageFavorites);
     favorites = arrayFavorites;
     paintFavorites();
   }
 }
 
-//EVENTO de escucha serie Events que ejecuta guardar favoritas en local Storage
+//EVENT listener in order to store favorite shows in local storage.
 function listenSerieEvents() {
   setInLocalStorage();
   const seriesElements = document.querySelectorAll('.js-seriesCard');
@@ -169,7 +166,7 @@ function listenSerieEvents() {
   }
 }
 
-//Función que devuelve el id de la serie clikada
+//Function that returns clicked show ID.
 function handleSerie(ev) {
   const clickedSerieId = parseInt(ev.currentTarget.id); //pasarlo a number!!!
 
@@ -181,10 +178,10 @@ function handleSerie(ev) {
     return favorite.id === clickedSerieId;
   });
 
-  //para que no la suba por duplicado al array de favorites
+  // Condition to avoid push duplicate show to favourites array.
   if (favoriteFoundIndex === -1) {
     favorites.push(serieFound);
-    //para que la quite si ya está en el array de favorites
+    //In case this show is already in favourites array, we'll remove from there.
   } else {
     favorites.splice(favoriteFoundIndex, 1);
   }
@@ -192,7 +189,7 @@ function handleSerie(ev) {
   paintFavorites();
 }
 
-// EVENTO click al botón de buscar
+// EVENT click on search button
 function handleInputSearch() {
   series = [];
   paintFavorites();
@@ -201,14 +198,14 @@ function handleInputSearch() {
 }
 searchBtnElement.addEventListener('click', handleInputSearch);
 
-//EVENTO recargar página al pulsr botón
+//EVENT to reload page by pressing button
 const reloadElement = document.querySelector('.js-reloadButton');
 function handleReload() {
   location.reload();
 }
 reloadElement.addEventListener('click', handleReload);
 
-//función que ejecuta el evento de escucha de la línea 132
+//Function to run event listener from line 132
 function handleDeleteAllFav() {
   favorites = [];
   paintSeries();
