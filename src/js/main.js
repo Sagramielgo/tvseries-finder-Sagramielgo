@@ -51,7 +51,7 @@ function paintSeries() {
   let codeHTML = '';
   let isFavoriteClass;
   for (let index = 0; index < series.length; index++) {
-    const { name, id, image } = series[index];
+    const { name, id, image, schedule } = series[index];
 
     //le añade la clase favorite con una función
     if (isFavoriteSerie(series[index])) {
@@ -62,6 +62,17 @@ function paintSeries() {
     codeHTML += `<li class="seriesCard js-seriesCard " id="${id}">`;
     codeHTML += `<article class="showCard ${isFavoriteClass} js-showCard">`;
     codeHTML += `<h3 class="seriesTitle js-seriesTitle">${name}</h3>`;
+    if (schedule.days.length > 0) {
+      codeHTML += `<ul>`;
+      /*   for (let index = 0; index < schedule.days.length; index++) {
+      const daysShow = schedule.days[index];
+      codeHTML += `<li> ${daysShow}`;
+      codeHTML += `</li>`;
+    } */
+
+      codeHTML += `<li>` + schedule.days.join(`</li><li>`) + '</li>';
+      codeHTML += `</ul>`;
+    }
     codeHTML += `<div class="imgContainer">`;
     if (image) {
       codeHTML += `<img src="${image.medium}" class="seriesImage js-seriesImage" alt="${name}" /></a></div>`;
