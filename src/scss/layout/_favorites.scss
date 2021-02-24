@@ -70,7 +70,7 @@
 .favoriteTitle {
   color: whitesmoke;
   font-size: 11px;
-  padding: 5px 5px 3px 5px;
+  padding: 5px 5px 0 5px;
   text-align: center;
   font-weight: 300;
   font-family: $fontBrand;
@@ -85,7 +85,7 @@
 .favoriteImage {
   width: 75px;
   height: 85px;
-  border-radius: 15px;
+  border-radius: 10px;
   align-items: center;
 
   @media all and (min-width: 768px) {

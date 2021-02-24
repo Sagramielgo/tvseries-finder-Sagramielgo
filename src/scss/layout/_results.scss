@@ -18,8 +18,8 @@
 
 .showCard {
   cursor: pointer;
-  width: 150px;
-  height: 280px;
+  width: 160px;
+  height: 275px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -43,21 +43,20 @@
   }
   @media all and (min-width: 768px) {
     margin: 25px;
-    width: 190px;
+    width: 200px;
     height: 340px;
   }
   @media all and (min-width: 1200px) {
-    width: 230px;
+    width: 240px;
     height: 400px;
   }
 }
 .seriesTitle {
   color: rgb(52, 52, 107);
   font-size: 16px;
-  padding-top: 5px;
+  padding: 10px 5px 0 5px;
   text-align: center;
   font-family: $fontBrand;
-  word-wrap: break-word;
 
   @media all and (min-width: 768px) {
     font-size: 20px;
@@ -70,7 +69,7 @@
 }
 .seriesImage {
   width: 140px;
-  height: 180px;
+  height: 170px;
   align-items: center;
   border-bottom-left-radius: 18px;
   border-bottom-right-radius: 18px;
@@ -81,7 +80,7 @@
   }
   @media all and (min-width: 1200px) {
     width: 220px;
-    height: 270px;
+    height: 260px;
   }
 }
 .series--favorite {
