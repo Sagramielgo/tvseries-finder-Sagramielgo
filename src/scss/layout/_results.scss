@@ -54,17 +54,17 @@
 .seriesTitle {
   color: rgb(52, 52, 107);
   font-size: 16px;
-  padding: 7px 5px;
+  padding-top: 5px;
   text-align: center;
   font-family: $fontBrand;
   word-wrap: break-word;
 
   @media all and (min-width: 768px) {
-    font-size: 19px;
-    padding: 10px 0 0 0;
+    font-size: 20px;
+    padding: 8px 0 5px 0;
   }
   @media all and (min-width: 1200px) {
-    font-size: 22px;
+    font-size: 24px;
   }
 }
 .seriesImage {
@@ -92,12 +92,19 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 0 3px;
+  @media all and (min-width: 768px) {
+    margin: 0 5px;
+  }
+  @media all and (min-width: 1200px) {
+    margin: 0 10px;
+  }
 }
 .day {
   margin: 0 3px;
-  font-size: 12px;
+  font-size: 11px;
   font-family: $fontBrand;
   @media all and (min-width: 768px) {
-    font-size: 19px;
+    font-size: 15px;
   }
 }
