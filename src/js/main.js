@@ -13,7 +13,7 @@ let series = [];
 //CREATE a function in order to put inside the fetch(call to API)
 function getDataFromApi() {
   const inputValue = inputElement.value;
-  fetch(`https://api.tvmaze.com/search/shows?q=${inputValue}`)
+  fetch(`//api.tvmaze.com/search/shows?q=${inputValue}`)
     .then((response) => response.json())
     //We're doing a 'for' to avoid 'score' and get directly what we need, which is 'show' in this case
     .then((data) => {
@@ -43,8 +43,7 @@ inputElement.addEventListener('keyup', handleFilter);
 //Paint API search in HTML
 function paintSeries() {
   //If there is no image, this is the default one to put instead
-  const placeholderImg =
-    'https://via.placeholder.com/210x295/464686/ffffff/?text=';
+  const placeholderImg = '//via.placeholder.com/210x295/464686/ffffff/?text=';
 
   let codeHTML = '';
   let isFavoriteClass;
@@ -100,8 +99,7 @@ function paintFavorites() {
     return;
   }
   //Default image in case the show doesn't have any.
-  const placeholderImg =
-    'https://via.placeholder.com/210x295/8ec0f0/1f154e/?text=';
+  const placeholderImg = '//via.placeholder.com/210x295/8ec0f0/1f154e/?text=';
 
   let codeHTML = '';
   codeHTML += `<h2 class="favoritesTitle">`;
