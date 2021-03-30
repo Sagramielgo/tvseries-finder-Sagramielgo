@@ -1,5 +1,3 @@
-'use strict';
-
 const formElement = document.querySelector('.js-form');
 const searchBtnElement = document.querySelector('.js-searchButton');
 const showsContainerElement = document.querySelector('.js-showsContainer');
@@ -15,7 +13,7 @@ let series = [];
 //CREATE a function in order to put inside the fetch(call to API)
 function getDataFromApi() {
   const inputValue = inputElement.value;
-  fetch(`http://api.tvmaze.com/search/shows?q=${inputValue}`)
+  fetch(`https://api.tvmaze.com/search/shows?q=${inputValue}`)
     .then((response) => response.json())
     //We're doing a 'for' to avoid 'score' and get directly what we need, which is 'show' in this case
     .then((data) => {
