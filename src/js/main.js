@@ -43,7 +43,8 @@ inputElement.addEventListener('keyup', handleFilter);
 //Paint API search in HTML
 function paintSeries() {
   //If there is no image, this is the default one to put instead
-  const placeholderImg = '//via.placeholder.com/210x295/464686/ffffff/?text=';
+  const placeholderImg = './assets/images/imgPlaceholder.png';
+  /* '//via.placeholder.com/210x295/464686/ffffff/?text='; */
 
   let codeHTML = '';
   let isFavoriteClass;
@@ -69,7 +70,7 @@ function paintSeries() {
     if (image) {
       codeHTML += `<img src="${image.medium}" class="seriesImage js-seriesImage" alt="${name}" /></a></div>`;
     } else {
-      codeHTML += `<img src="${placeholderImg}${name}" class="seriesImage js-seriesImage" alt="${name}" /></a></div>`;
+      codeHTML += `<img src="${placeholderImg}" class="seriesImage js-seriesImage" alt="${name}" /></a></div>`;
     }
     codeHTML += `</article>`;
     codeHTML += `</li>`;
@@ -99,7 +100,8 @@ function paintFavorites() {
     return;
   }
   //Default image in case the show doesn't have any.
-  const placeholderImg = '//via.placeholder.com/210x295/8ec0f0/1f154e/?text=';
+  const placeholderImg = './assets/images/favImgPlaceholder.png';
+  /* '//via.placeholder.com/210x295/8ec0f0/1f154e/?text='; */
 
   let codeHTML = '';
   codeHTML += `<h2 class="favoritesTitle">`;
@@ -120,7 +122,7 @@ function paintFavorites() {
     if (image) {
       codeHTML += `<img src="${image.medium}" class="favoriteImage js-seriesImage" alt="${name}" /></a></div>`;
     } else {
-      codeHTML += `<img src="${placeholderImg}${name}" class="favoriteImage js-seriesImage" alt="${name}" /></a></div>`;
+      codeHTML += `<img src="${placeholderImg}" class="favoriteImage js-seriesImage" alt="${name}" /></a></div>`;
     }
     codeHTML += `</article>`;
     codeHTML += `</li>`;
