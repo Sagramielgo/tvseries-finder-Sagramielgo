@@ -7,7 +7,7 @@
 }
 .header {
   min-width: 100%;
-  height: 120px;
+  height: 150px;
   border-radius: 20px;
   top: 0;
   position: fixed;
@@ -17,7 +17,7 @@
   align-items: center;
   background-color: rgba(62, 31, 90, 0.6);
   @media all and (min-width: 768px) {
-    height: 160px;
+    height: 200px;
   }
 
   & .headerTitle {
@@ -137,4 +137,18 @@
   box-shadow: none;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
+}
+.firmLink {
+  text-decoration: none;
+}
+.copy {
+  /*  margin: 10px 0 30px 0; */
+  font-weight: normal;
+  font-size: 16px;
+  color: white;
+  padding: 10px;
+}
+
+.fa-paw {
+  color: cyan;
 }
