@@ -1,3 +1,4 @@
+'use strict';
 const formElement = document.querySelector('.js-form');
 const searchBtnElement = document.querySelector('.js-searchButton');
 const showsContainerElement = document.querySelector('.js-showsContainer');
@@ -101,7 +102,7 @@ function paintFavorites() {
   }
   //Default image in case the show doesn't have any.
   const placeholderImg = './assets/images/favImgPlaceholder.png';
-  /* '//via.placeholder.com/210x295/8ec0f0/1f154e/?text='; */
+  /*  '//via.placeholder.com/210x295/8ec0f0/1f154e/?text='; */
 
   let codeHTML = '';
   codeHTML += `<h2 class="favoritesTitle">`;
